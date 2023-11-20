@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
+
+
 export const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
-                <a className="navbar-brand" href="#">
+                <Link className="navbar-brand" to="/">
                     Home
-                </a>
+                </Link>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -19,29 +22,29 @@ export const NavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <Link className="nav-link" to="/login">
                                 Login
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <Link className="nav-link" to="/register">
                                 Register
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <Link className="nav-link" to="/logout">
                                 Logout
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <Link className="nav-link" to="/catalog">
                                 Catalog
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                About
-                            </a>
+                            <Link className="nav-link" to="/add-exercise">
+                                Add exercises
+                            </Link>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#">
@@ -49,9 +52,9 @@ export const NavBar = () => {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                Add exercise
-                            </a>
+                            <Link className="nav-link" to="/about">
+                                About
+                            </Link>
                         </li>
 
                     </ul>
