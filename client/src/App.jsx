@@ -8,20 +8,26 @@ import { Home } from "./components/Home/Home"
 import { About } from "./components/About/About";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
+import { Logout } from "./components/Logout/Logout";
 
 import { AuthContext } from "./contexts/authContext";
 import * as authService from "./services/authService";
 
-
 function App() {
     const navigate = useNavigate();
 
-    const [auth, setAuth] = useState({});
+    const [auth, setAuth] = useState(() => {
+        localStorage.removeItem('accessToken');
+
+        return {};
+    });
 
     const loginSubmitHandler = async (values) => {
         const result = await authService.login(values.email, values.password);
 
         setAuth(result);
+
+        localStorage.setItem('accessToken', result.accessToken);
 
         navigate('/');
     };
@@ -30,10 +36,20 @@ function App() {
         if (values.password !== values.confirmPassword) {
             return;
         }
-        
-        const result = await authService.register(values);
+
+        const result = await authService.register(values.username, values.email, values.password);
 
         setAuth(result);
+
+        localStorage.setItem('accessToken', result.accessToken);
+
+        navigate('/');
+    };
+
+    const logoutHandler = (e) => {
+        setAuth({});
+
+        localStorage.removeItem('accessToken');
 
         navigate('/');
     };
@@ -41,10 +57,12 @@ function App() {
     const contextValues = {
         loginSubmitHandler,
         registerSubmitHandler,
+        logoutHandler,
         username: auth.username,
         email: auth.email,
         isAuth: !!auth.username,
     };
+
 
     return (
         <>
@@ -56,6 +74,7 @@ function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/logout" element={<Logout />} />
                 </Routes>
 
                 <Footer />

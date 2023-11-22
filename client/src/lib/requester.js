@@ -13,6 +13,15 @@ export const request = async (method, url, data) => {
         options.body = JSON.stringify(data);
     }
 
+    const token = localStorage.getItem('accessToken');
+
+    if (token) {
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': token
+        };
+    }
+
     const response = await fetch(url, options);
 
     if (response.status === 204) {
@@ -29,7 +38,7 @@ export const request = async (method, url, data) => {
 
 };
 
-export const get = request.bind(null,'GET');
-export const post = request.bind(null,'POST');
-export const put = request.bind(null,'PUT');
-export const del = request.bind(null,'DELETE');
+export const get = request.bind(null, 'GET');
+export const post = request.bind(null, 'POST');
+export const put = request.bind(null, 'PUT');
+export const del = request.bind(null, 'DELETE');
