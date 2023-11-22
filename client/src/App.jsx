@@ -24,10 +24,23 @@ function App() {
         setAuth(result);
 
         navigate('/');
-    }
+    };
+
+    const registerSubmitHandler = async (values) => {
+        if (values.password !== values.confirmPassword) {
+            return;
+        }
+        
+        const result = await authService.register(values);
+
+        setAuth(result);
+
+        navigate('/');
+    };
 
     const contextValues = {
         loginSubmitHandler,
+        registerSubmitHandler,
         username: auth.username,
         email: auth.email,
         isAuth: !!auth.username,

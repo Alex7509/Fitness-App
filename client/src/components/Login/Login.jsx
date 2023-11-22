@@ -20,7 +20,6 @@ export const Login = () => {
                         type="email"
                         className="form-control"
                         id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
                         placeholder="Enter email"
                         name="email"
                         value={values.email}

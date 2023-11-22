@@ -1,16 +1,30 @@
+import { useContext } from "react";
+
+import { AuthContext } from "../../contexts/authContext";
+import { UseForm } from "../../hooks/useForm";
 
 export const Register = () => {
+    const { registerSubmitHandler } = useContext(AuthContext);
+    const { values, onChange, onSubmit } = UseForm(registerSubmitHandler, {
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
+
     return (
         <div className="conteiner min-vh-100 d-flex justify-content-center align-items-center form-control-lg">
-            <form >
+            <form onSubmit={onSubmit}>
                 <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Username</label>
+                    <label htmlFor="exampleInputUsername1">Username</label>
                     <input
-                        type="username"
+                        type="text"
                         className="form-control"
                         id="exampleInputUsername1"
                         placeholder="Username"
                         name="username"
+                        value={values.username}
+                        onChange={onChange}
                     />
                 </div>
                 <div className="form-group">
@@ -18,9 +32,11 @@ export const Register = () => {
                     <input
                         type="email"
                         className="form-control"
-                        id="exampleInputEmail2"
+                        id="exampleInputEmail1"
                         placeholder="Enter email"
                         name="email"
+                        value={values.email}
+                        onChange={onChange}
                     />
                 </div>
                 <div className="form-group">
@@ -28,19 +44,23 @@ export const Register = () => {
                     <input
                         type="password"
                         className="form-control"
-                        id="exampleInputPassword2"
+                        id="exampleInputPassword1"
                         placeholder="Password"
                         name="password"
+                        value={values.password}
+                        onChange={onChange}
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Confirm password</label>
                     <input
-                        type="confirmPassword"
+                        type="password"
                         className="form-control"
-                        id="exampleInputPassword3"
+                        id="exampleInputPassword2"
                         placeholder="Confirm password"
                         name="confirmPassword"
+                        value={values.confirmPassword}
+                        onChange={onChange}
                     />
                 </div>
                 <div className="text-center form-control-lg">
