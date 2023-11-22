@@ -7,6 +7,7 @@ import { Footer } from "./components/Footer/Footer"
 import { Home } from "./components/Home/Home"
 import { About } from "./components/About/About";
 import { Login } from "./components/Login/Login";
+import { Register } from "./components/Register/Register";
 
 import { AuthContext } from "./contexts/authContext";
 import * as authService from "./services/authService";
@@ -41,6 +42,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
 
                 <Footer />
