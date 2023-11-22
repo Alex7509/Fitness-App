@@ -25,9 +25,16 @@ function App() {
         navigate('/');
     }
 
+    const contextValues = {
+        loginSubmitHandler,
+        username: auth.username,
+        email: auth.email,
+        isAuth: !!auth.username,
+    };
+
     return (
         <>
-            <AuthContext.Provider value={{ loginSubmitHandler }}>
+            <AuthContext.Provider value={contextValues}>
                 <NavBar />
 
                 <Routes>
