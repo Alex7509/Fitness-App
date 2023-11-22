@@ -12,7 +12,7 @@ export const NavBar = () => {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
                 {isAuth && (
-                    <span class=" text-white">
+                    <span className=" text-white">
                         Welcome {username}
                     </span>
                 )}
