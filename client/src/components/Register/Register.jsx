@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { AuthContext } from "../../contexts/authContext";
+import { AuthContext } from "../../contexts/authContext.jsx";
 import { UseForm } from "../../hooks/useForm";
 
 export const Register = () => {
