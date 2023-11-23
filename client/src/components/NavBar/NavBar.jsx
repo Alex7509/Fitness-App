@@ -7,39 +7,39 @@ export const NavBar = () => {
     const { isAuth, username } = useContext(AuthContext);
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-white">
             <div className="container">
                 {isAuth && (
-                    <span className=" text-white">
+                    <span className="text-dark">
                         Welcome {username}
                     </span>
                 )}
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">
+                            <Link className="nav-link text-dark" to="/">
                                 Home
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/about">
+                            <Link className="nav-link text-dark" to="/about">
                                 About
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/catalog">
+                            <Link className="nav-link text-dark" to="/catalog">
                                 Exercises
                             </Link>
                         </li>
                         {!isAuth && (
                             <>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/login">
+                                    <Link className="nav-link text-dark" to="/login">
                                         Login
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/register">
+                                    <Link className="nav-link text-dark" to="/register">
                                         Register
                                     </Link>
                                 </li>
@@ -49,17 +49,17 @@ export const NavBar = () => {
                         {isAuth && (
                             <>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/add-exercise">
+                                    <Link className="nav-link text-dark" to="/add-exercise">
                                         Add exercise
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="#">
+                                    <Link className="nav-link text-dark" to="#">
                                         My program
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/logout">
+                                    <Link className="nav-link text-dark" to="/logout">
                                         Logout
                                     </Link>
                                 </li>

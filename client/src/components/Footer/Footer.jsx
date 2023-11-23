@@ -1,6 +1,6 @@
 export const Footer = () => {
     return (
-        <footer className=" bg-dark text-white fixed-bottom">
+        <footer className=" bg-white text-dark fixed-bottom">
             <div
                 className="text-center" >
                 ReactJS project
