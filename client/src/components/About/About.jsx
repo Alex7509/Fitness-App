@@ -8,6 +8,5 @@ export const About = () => {
                 </p>
             </div>
         </>
-
     );
 };

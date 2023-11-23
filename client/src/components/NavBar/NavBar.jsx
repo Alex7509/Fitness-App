@@ -30,7 +30,7 @@ export const NavBar = () => {
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/catalog">
-                                Catalog
+                                Exercises
                             </Link>
                         </li>
                         {!isAuth && (
@@ -52,7 +52,7 @@ export const NavBar = () => {
                             <>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/add-exercise">
-                                        Add exercises
+                                        Add exercise
                                     </Link>
                                 </li>
                                 <li className="nav-item">
