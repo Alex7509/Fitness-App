@@ -8,14 +8,20 @@ export const getAll = async () => {
     return result;
 };
 
-export const create = async (data) => {
-    const result = await request.post(baseUrl, data);
+export const create = async (exerciseData) => {
+    const result = await request.post(baseUrl, exerciseData);
 
     return result;
 };
 
 export const getOne = async (exerciseId) => {
     const result = await request.get(`${baseUrl}/${exerciseId}`);
+
+    return result;
+};
+
+export const deleteExercise = async (exerciseId, exerciseData) => {
+    const result = await request.del(`${baseUrl}/${exerciseId}`);
 
     return result;
 };

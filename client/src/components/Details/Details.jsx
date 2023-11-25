@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import * as exerciseService from "../../services/exercisesService";
 import { AuthContext } from "../../contexts/authContext";
 
 export const Details = () => {
+    const navigate = useNavigate();
     const [exercise, setExercise] = useState({});
     const { exerciseId } = useParams();
     const { userId } = useContext(AuthContext);
@@ -16,6 +17,14 @@ export const Details = () => {
     }, [exerciseId]);
 
     const isOwner = userId === exercise._ownerId;
+
+    const onDeleteClick = async () => {
+        await exerciseService.deleteExercise(exerciseId, exercise);
+
+        setExercise(state => state.filter(exercise => exercise._id !== exerciseId));
+
+        navigate('/exercises');
+    };
 
     return (
         <div className="card mx-auto" style={{ maxWidth: 800 }}>
@@ -38,9 +47,9 @@ export const Details = () => {
                             <Link to={`/exercise/${exerciseId}/edit`} className="btn btn-primary me-md-2">
                                 Edit
                             </Link>
-                            <Link to={`/exercise/${exerciseId}/delete`} className="btn btn-danger" >
+                            <button className="btn btn-danger" onClick={onDeleteClick} >
                                 Delete
-                            </Link>
+                            </button>
                         </div>
                     )}
                 </div>
