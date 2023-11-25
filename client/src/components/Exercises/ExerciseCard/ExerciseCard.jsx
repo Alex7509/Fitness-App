@@ -18,17 +18,9 @@ export const ExerciseCard = ({
                     <Link to={`${_id}/details`} className="btn btn-primary">
                         Details
                     </Link>
-                    <a href="#" className="btn btn-primary">
-                            Edit
-                        </a>
-                        <a href="#" className="btn btn-danger">
-                            Delete
-                        </a>
                 </div>
             </div>
-            <a href="#" className="btn btn-primary">
-                    Add to my program
-                </a>
+        
         </div>
     );
 };
