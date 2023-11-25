@@ -50,6 +50,7 @@ export const AuthProvider = ({ children }) => {
         loginSubmitHandler,
         registerSubmitHandler,
         logoutHandler,
+        userId: auth._id,
         username: auth.username,
         email: auth.email,
         isAuth: !!auth.username,
