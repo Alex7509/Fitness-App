@@ -13,3 +13,9 @@ export const create = async (data) => {
 
     return result;
 };
+
+export const getOne = async (exerciseId) => {
+    const result = await request.get(`${baseUrl}/${exerciseId}`);
+
+    return result;
+};

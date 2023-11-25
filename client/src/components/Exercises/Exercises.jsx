@@ -12,7 +12,7 @@ export const Exercises = () => {
     }, []);
 
     return (
-        <div className="row">
+        <div className="row mx-auto">
             {exercises.map(exercise => (
                 <ExerciseCard key={exercise._id} {...exercise} />
             ))}

@@ -7,6 +7,7 @@ import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { Logout } from "./components/Logout/Logout";
 import { AddExercise } from "./components/AddExercise/AddExercise";
+import { Details } from "./components/Details/Details";
 import { Exercises } from "./components/Exercises/Exercises";
 
 import { AuthProvider } from "./contexts/authContext";
@@ -24,6 +25,7 @@ function App() {
                     <Route path="/logout" element={<Logout />} />
                     <Route path="/exercises" element={<Exercises />} />
                     <Route path="/add-exercise" element={<AddExercise />} />
+                    <Route path="/exercises/:exerciseId/details" element={<Details />} />
                 </Routes>
             </>
         </AuthProvider>
