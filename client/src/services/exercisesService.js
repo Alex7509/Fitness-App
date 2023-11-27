@@ -25,3 +25,9 @@ export const deleteExercise = async (exerciseId, exerciseData) => {
 
     return result;
 };
+
+export const edit = async (exerciseId, exerciseData) => {
+    const result = request.put(`${baseUrl}/${exerciseId}`, exerciseData);
+
+    return result;
+}

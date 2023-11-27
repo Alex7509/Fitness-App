@@ -44,7 +44,7 @@ export const Details = () => {
                     </div>
                     {isOwner && (
                         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <Link to={`/exercise/${exerciseId}/edit`} className="btn btn-primary me-md-2">
+                            <Link to={`/exercises/${exerciseId}/edit`} className="btn btn-primary me-md-2">
                                 Edit
                             </Link>
                             <button className="btn btn-danger" onClick={onDeleteClick} >

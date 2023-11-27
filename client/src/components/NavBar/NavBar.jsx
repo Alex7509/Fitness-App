@@ -7,7 +7,7 @@ export const NavBar = () => {
     const { isAuth, username } = useContext(AuthContext);
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-white">
+        <nav className="navbar navbar-expand-lg bg-white">
             <div className="container">
                 {isAuth && (
                     <span className="text-dark">
