@@ -20,7 +20,7 @@ export const getOne = async (exerciseId) => {
     return result;
 };
 
-export const deleteExercise = async (exerciseId, exerciseData) => {
+export const deleteExercise = async (exerciseId) => {
     const result = await request.del(`${baseUrl}/${exerciseId}`);
 
     return result;

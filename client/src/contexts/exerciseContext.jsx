@@ -8,7 +8,7 @@ export const ExerciseContext = createContext();
 export const ExerciseProvider = ({ children }) => {
     const navigate = useNavigate();
     const { exerciseId } = useParams();
-    const [exercise, setExercise] = useState({});
+    const [exercise, setExercise] = useState([]);
 
     useEffect(() => {
         exerciseService.getOne(exerciseId)
@@ -21,9 +21,19 @@ export const ExerciseProvider = ({ children }) => {
         navigate(`exercises/${values._id}/details`);
     }
 
+    const onDeleteClick = async (exerciseId) => {
+        await exerciseService.deleteExercise(exerciseId);
+
+        setExercise(state => state.filter(exercise => exercise._id !== exerciseId));
+
+        navigate('/exercises');
+    };
+
     const contextValues = {
         onEditSubmit,
+        onDeleteClick,
     };
+
 
     return (
         <ExerciseContext.Provider value={contextValues}>
