@@ -1,15 +1,12 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-import { UseForm } from "../../hooks/useForm";
 import * as exerciseService from "../../services/exercisesService";
-import { ExerciseContext } from "../../contexts/exerciseContext";
 
 export const Edit = () => {
+    const navigate = useNavigate();
     const { exerciseId } = useParams();
-    const { onEditSubmit } = useContext(ExerciseContext);
-
-    const { values, onChange, onSubmit, changeValues } = UseForm(onEditSubmit, {
+    const [exercise, setExercise] = useState({
         imageUrl: '',
         name: '',
         workingMuscles: '',
@@ -18,12 +15,31 @@ export const Edit = () => {
 
     useEffect(() => {
         exerciseService.getOne(exerciseId)
-            .then(result => changeValues(result));
+            .then(result => {
+                setExercise(result);
+            });
     }, [exerciseId]);
+
+    const onEditSubmit = async (e) => {
+        e.preventDefault();
+
+        const values = Object.fromEntries(new FormData(e.currentTarget));
+
+        await exerciseService.edit(exerciseId, values);
+
+        navigate(`/exercises/${exerciseId}/details`);
+    };
+
+    const onChange = (e) => {
+        setExercise(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+    };
 
     return (
         <div className="conteiner min-vh-100 d-flex justify-content-center align-items-center form-control-lg">
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onEditSubmit}>
                 <div className="form-group">
                     <h2>Edit exercise</h2>
                     <label htmlFor="formGroupExampleInput">Image Url</label>
@@ -33,7 +49,7 @@ export const Edit = () => {
                         id="formGroupExampleInput"
                         placeholder="Image Url"
                         name="imageUrl"
-                        value={values.imageUrl}
+                        value={exercise.imageUrl}
                         onChange={onChange}
                     />
                 </div>
@@ -45,7 +61,7 @@ export const Edit = () => {
                         id="formGroupExampleInput2"
                         placeholder="Name"
                         name="name"
-                        value={values.name}
+                        value={exercise.name}
                         onChange={onChange}
                     />
                 </div>
@@ -57,7 +73,7 @@ export const Edit = () => {
                         id="formGroupExampleInput2"
                         placeholder="Working muscles"
                         name="workingMuscles"
-                        value={values.workingMuscles}
+                        value={exercise.workingMuscles}
                         onChange={onChange}
                     />
                 </div>
@@ -69,7 +85,7 @@ export const Edit = () => {
                         rows={5}
                         placeholder="Description"
                         name="description"
-                        value={values.description}
+                        value={exercise.description}
                         onChange={onChange}
                     />
                 </div>

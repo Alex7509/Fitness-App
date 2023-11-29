@@ -10,14 +10,13 @@ import { AddExercise } from "./components/AddExercise/AddExercise";
 import { Details } from "./components/Details/Details";
 import { Exercises } from "./components/Exercises/Exercises";
 import { Edit } from "./components/Edit/Edit";
+import { MyProgram } from "./components/MyProgram/MyProgram";
 
 import { AuthProvider } from "./contexts/authContext";
-import { ExerciseProvider } from "./contexts/exerciseContext";
 
 function App() {
     return (
         <AuthProvider>
-            <ExerciseProvider>
                 <>
                     <NavBar />
                     <Routes>
@@ -30,9 +29,9 @@ function App() {
                         <Route path="/add-exercise" element={<AddExercise />} />
                         <Route path="/exercises/:exerciseId/details" element={<Details />} />
                         <Route path="/exercises/:exerciseId/edit" element={<Edit />} />
+                        <Route path="/my-program" element={<MyProgram />} />
                     </Routes>
                 </>
-            </ExerciseProvider>
         </AuthProvider>
     );
 };

@@ -1,16 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import * as exerciseService from "../../services/exercisesService";
 import { AuthContext } from "../../contexts/authContext";
-import { ExerciseContext } from "../../contexts/exerciseContext";
 
 export const Details = () => {
+    const navigate = useNavigate();
     const [exercise, setExercise] = useState({});
     const { exerciseId } = useParams();
     const { userId } = useContext(AuthContext);
-    const { onDeleteClick } = useContext(ExerciseContext);
 
     useEffect(() => {
         exerciseService.getOne(exerciseId)
@@ -18,6 +17,16 @@ export const Details = () => {
     }, [exerciseId]);
 
     const isOwner = userId === exercise._ownerId;
+
+    const onDeleteClick = async () => {
+        const isConfirmed = confirm(`Are you sure you want to delete ${exercise.name}`);
+
+        if (isConfirmed) {
+            await exerciseService.deleteExercise(exerciseId);
+
+            navigate('/exercises');
+        }
+    };
 
     return (
         <div className="card mx-auto" style={{ maxWidth: 800 }}>
@@ -40,7 +49,7 @@ export const Details = () => {
                             <Link to={`/exercises/${exerciseId}/edit`} className="btn btn-primary me-md-2">
                                 Edit
                             </Link>
-                            <button className="btn btn-danger" onClick={() => onDeleteClick(exerciseId)} >
+                            <button className="btn btn-danger" onClick={onDeleteClick} >
                                 Delete
                             </button>
                         </div>
