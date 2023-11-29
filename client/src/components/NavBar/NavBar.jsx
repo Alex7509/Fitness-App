@@ -54,7 +54,7 @@ export const NavBar = () => {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link text-dark" to="#">
+                                    <Link className="nav-link text-dark" to="/my-program">
                                         My program
                                     </Link>
                                 </li>
