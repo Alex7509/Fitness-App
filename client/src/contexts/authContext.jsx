@@ -16,13 +16,26 @@ export const AuthProvider = ({ children }) => {
     });
 
     const loginSubmitHandler = async (values) => {
+        if (values.email === '' ||
+            values.password === '') {
+            toast.error('All fields are required');
+        }
+
+        if (values.password.length < 5) {
+            toast.error('Password must be 5 characters long')
+        }
+
         const result = await authService.login(values.email, values.password);
 
-        setAuth(result);
+        try {
+            setAuth(result);
 
-        localStorage.setItem('accessToken', result.accessToken);
+            localStorage.setItem('accessToken', result.accessToken);
 
-        navigate('/');
+            navigate('/');
+        } catch (error) {
+            console.log(error);
+        }
 
 
     };
@@ -62,11 +75,15 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logoutHandler = (e) => {
-        setAuth({});
+        try {
+            setAuth({});
 
-        localStorage.removeItem('accessToken');
+            localStorage.removeItem('accessToken');
 
-        navigate('/');
+            navigate('/');
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const contextValues = {
