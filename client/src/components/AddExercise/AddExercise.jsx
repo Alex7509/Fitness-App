@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import * as exerciseService from "../../services/exercisesService";
+import { toast } from "react-toastify";
 
 export const AddExercise = () => {
     const navigate = useNavigate();
@@ -9,6 +10,21 @@ export const AddExercise = () => {
         e.preventDefault();
 
         const data = Object.fromEntries(new FormData(e.currentTarget));
+
+        if (data.imageUrl === '' ||
+            data.name === '' ||
+            data.workingMuscles === '' ||
+            data.description === '') {
+            return toast.error('All fields are required');
+        }
+
+        if (data.name.length < 4){
+            return toast.error('Name must be 4 characters long');
+        }
+
+        if (data.description.length < 20){
+            return toast.error('Description must be 20 characters long');
+        }
 
         try {
             await exerciseService.create(data);

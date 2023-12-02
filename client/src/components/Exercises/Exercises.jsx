@@ -8,7 +8,8 @@ export const Exercises = () => {
 
     useEffect(() => {
         exercisesService.getAll()
-            .then((result) => setExercises(result));
+            .then((result) => setExercises(result))
+            .catch((error) => console.log(error))
     }, []);
 
     return (
