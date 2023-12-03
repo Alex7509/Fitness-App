@@ -34,6 +34,14 @@ export const Edit = () => {
             return toast.error('All fields are required');
         }
 
+        if (values.name.length < 4){
+            return toast.error('Name must be 4 characters long');
+        }
+
+        if (values.description.length < 20){
+            return toast.error('Description must be 20 characters long');
+        }
+
         try {
             await exerciseService.edit(exerciseId, values);
 
