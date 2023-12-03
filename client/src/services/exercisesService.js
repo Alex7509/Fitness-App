@@ -31,3 +31,10 @@ export const edit = async (exerciseId, exerciseData) => {
 
     return result;
 }
+
+export const getExerciseByOwner = async (userId) => {
+    const result = await request.get(baseUrl);
+    const filteredResult = result.filter(x => x._ownerId === userId);
+
+    return filteredResult;
+}

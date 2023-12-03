@@ -18,11 +18,11 @@ export const AuthProvider = ({ children }) => {
     const loginSubmitHandler = async (values) => {
         if (values.email === '' ||
             values.password === '') {
-            toast.error('All fields are required');
+            return toast.error('All fields are required');
         }
 
         if (values.password.length < 5) {
-            toast.error('Password must be 5 characters long')
+            return toast.error('Password must be 5 characters long')
         }
 
         const result = await authService.login(values.email, values.password);
@@ -49,15 +49,15 @@ export const AuthProvider = ({ children }) => {
             values.email === '' ||
             values.password === '' ||
             values.confirmPassword === '') {
-            toast.error('All fields are required');
+            return toast.error('All fields are required');
         }
 
         if (values.username.length < 4) {
-            toast.error('Username must be 4 characters long')
+            return toast.error('Username must be 4 characters long')
         }
 
         if (values.password.length < 5) {
-            toast.error('Password must be 5 characters long')
+            return toast.error('Password must be 5 characters long')
         }
 
         const result = await authService.register(values.username, values.email, values.password);
@@ -94,8 +94,6 @@ export const AuthProvider = ({ children }) => {
         username: auth.username,
         email: auth.email,
         isAuth: !!auth.username,
-        userData: auth,
-        token: auth.accessToken,
     };
 
     return (

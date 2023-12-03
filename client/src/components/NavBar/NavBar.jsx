@@ -54,8 +54,8 @@ export const NavBar = () => {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link text-dark" to="/my-program">
-                                        My program
+                                    <Link className="nav-link text-dark" to="/my-exercises">
+                                        My exercises
                                     </Link>
                                 </li>
                                 <li className="nav-item">

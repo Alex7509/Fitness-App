@@ -9,11 +9,12 @@ export const Details = () => {
     const navigate = useNavigate();
     const [exercise, setExercise] = useState({});
     const { exerciseId } = useParams();
-    const { userId } = useContext(AuthContext);
+    const { userId, isAuth } = useContext(AuthContext);
 
     useEffect(() => {
         exerciseService.getOne(exerciseId)
-            .then(setExercise);
+            .then(setExercise)
+            .catch((error) => console.log(error))
     }, [exerciseId]);
 
     const isOwner = userId === exercise._ownerId;
@@ -22,11 +23,17 @@ export const Details = () => {
         const isConfirmed = confirm(`Are you sure you want to delete ${exercise.name}`);
 
         if (isConfirmed) {
-            await exerciseService.deleteExercise(exerciseId);
+            try {
+                await exerciseService.deleteExercise(exerciseId);
 
-            navigate('/exercises');
+                navigate('/exercises');
+            } catch (error) {
+                console.log(error);
+                navigate(`/exercises`);
+            }
         }
     };
+
 
     return (
         <div className="card mx-auto" style={{ maxWidth: 800 }}>
@@ -55,7 +62,6 @@ export const Details = () => {
                         </div>
                     )}
                 </div>
-                {/* <Link to={"#"} className="btn btn-primary">Add to my program</Link> */}
             </div>
         </div>
 
