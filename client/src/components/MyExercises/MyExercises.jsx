@@ -18,7 +18,7 @@ export const MyExercises = () => {
     return (
         <>
             <div className="text-center">
-                <h1>My program</h1>
+                <h1>My Exercises</h1>
             </div>
             {userExercises.map(x => (
                 <MyExercisesCard key={x._id} {...x} />

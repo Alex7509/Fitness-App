@@ -19,7 +19,7 @@ export const Details = () => {
 
     const isOwner = userId === exercise._ownerId;
 
-    const onDeleteClick = async () => {
+   const onDeleteClick = async () => {
         const isConfirmed = confirm(`Are you sure you want to delete ${exercise.name}`);
 
         if (isConfirmed) {
