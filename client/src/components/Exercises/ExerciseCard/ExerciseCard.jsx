@@ -19,8 +19,12 @@ export const ExerciseCard = ({
                         Details
                     </Link>
                 </div>
+                <div className="d-grid gap-2 d-md-flex">
+                    <button className="btn btn-primary btn-sm" type="button">Like</button>
+                    <button className="btn btn-danger btn-sm" type="button">Dislike</button>
+                </div>
             </div>
-        
+
         </div>
     );
 };
