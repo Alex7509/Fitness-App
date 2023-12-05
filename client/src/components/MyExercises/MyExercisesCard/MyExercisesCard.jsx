@@ -1,8 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 import * as exerciseService from "../../../services/exercisesService";
-
 
 export const MyExercisesCard = ({
     name,
@@ -17,10 +15,9 @@ export const MyExercisesCard = ({
             try {
                 await exerciseService.deleteExercise(_id);
 
-                navigate('/my-exercises');
+                navigate('/exercises');
             } catch (error) {
                 console.log(error);
-                navigate('/my-exercises');
             }
         }
     };

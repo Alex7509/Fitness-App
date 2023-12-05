@@ -29,7 +29,6 @@ export const Details = () => {
                 navigate('/exercises');
             } catch (error) {
                 console.log(error);
-                navigate(`/exercises`);
             }
         }
     };
@@ -56,7 +55,7 @@ export const Details = () => {
                             <Link to={`/exercises/${exerciseId}/edit`} className="btn btn-primary me-md-2">
                                 Edit
                             </Link>
-                            <button className="btn btn-danger" onClick={onDeleteClick} >
+                            <button className="btn btn-danger" onClick={onDeleteClick}>
                                 Delete
                             </button>
                         </div>
