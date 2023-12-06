@@ -1,10 +1,51 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+
+import { AuthContext } from "../../../contexts/authContext"
 
 export const ExerciseCard = ({
     imageUrl,
     name,
     _id,
 }) => {
+    const { isAuth } = useContext(AuthContext);
+
+    const [likesCount, setLikesCount] = useState(0);
+    const [dislikesCount, setDislikesCount] = useState(0);
+
+    const [likeActive, setLikeActive] = useState(false);
+    const [dislikeActive, setDislikeActive] = useState(false);
+
+    const likeClick = () => {
+        if (likeActive) {
+            setLikeActive(false);
+            setLikesCount(likesCount - 1);
+        } else {
+            setLikeActive(true);
+            setLikesCount(likesCount + 1);
+            if (dislikeActive) {
+                setDislikeActive(false);
+                setLikesCount(likesCount + 1);
+                setDislikesCount(dislikesCount - 1);
+            }
+        }
+    };
+
+    const dislikeClick = () => {
+        if (dislikeActive) {
+            setDislikeActive(false);
+            setDislikesCount(dislikesCount - 1);
+        } else {
+            setDislikeActive(true);
+            setDislikesCount(dislikesCount + 1);
+            if (likeActive) {
+                setLikeActive(false);
+                setDislikesCount(dislikesCount + 1);
+                setLikesCount(likesCount - 1);
+            }
+        }
+    };
+
     return (
         <div className="card" style={{ width: "18rem" }}>
             <img className="card-img-top" src={imageUrl} alt={name} />
@@ -19,10 +60,12 @@ export const ExerciseCard = ({
                         Details
                     </Link>
                 </div>
-                <div className="d-grid gap-2 d-md-flex">
-                    <button className="btn btn-primary btn-sm" type="button">Like</button>
-                    <button className="btn btn-danger btn-sm" type="button">Dislike</button>
-                </div>
+                {isAuth && (
+                    <div className="d-grid gap-2 d-md-flex">
+                        <button className="btn btn-primary btn-sm" type="button" onClick={likeClick}>Like: {likesCount}</button>
+                        <button className="btn btn-danger btn-sm" type="button" onClick={dislikeClick}>Dislike: {dislikesCount}</button>
+                    </div>
+                )}
             </div>
 
         </div>
