@@ -69,12 +69,12 @@ export const AuthProvider = ({ children }) => {
 
             navigate('/');
         } catch (error) {
-           console.log(error);
+            console.log(error);
         }
 
     };
 
-    const logoutHandler = (e) => {
+    const logoutHandler = () => {
         try {
             setAuth({});
 
@@ -90,10 +90,11 @@ export const AuthProvider = ({ children }) => {
         loginSubmitHandler,
         registerSubmitHandler,
         logoutHandler,
+        token:auth.accessToken,
         userId: auth._id,
         username: auth.username,
         email: auth.email,
-        isAuth: !!auth.username,
+        isAuth: !!auth.accessToken,
     };
 
     return (

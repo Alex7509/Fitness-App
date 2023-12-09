@@ -1,43 +1,54 @@
-import { useNavigate } from "react-router-dom";
 
-import * as exerciseService from "../../services/exercisesService";
-import { toast } from "react-toastify";
 
-export const AddExercise = () => {
-    const navigate = useNavigate();
+// import * as exerciseService from "../../services/exercisesService";
+// import { toast } from "react-toastify";
+import { UseForm } from "../../hooks/useForm";
 
-    const addExerciseSubmit = async (e) => {
-        e.preventDefault();
 
-        const data = Object.fromEntries(new FormData(e.currentTarget));
+export const AddExercise = ({ addExerciseSubmit }) => {
+    const { values, onChange, onSubmit } = UseForm(addExerciseSubmit, {
+        imageUrl: '',
+        name: '',
+        workingMuscles: '',
+        description: '',
+        likes: [],
+    });
 
-        if (data.imageUrl === '' ||
-            data.name === '' ||
-            data.workingMuscles === '' ||
-            data.description === '') {
-            return toast.error('All fields are required');
-        }
+    // const addExerciseSubmit = async (values) => {
+    //     // e.preventDefault();
 
-        if (data.name.length < 4){
-            return toast.error('Name must be 4 characters long');
-        }
+    //     // const data = Object.fromEntries(new FormData(e.currentTarget));
 
-        if (data.description.length < 20){
-            return toast.error('Description must be 20 characters long');
-        }
+    //     // if (data.imageUrl === '' ||
+    //     //     data.name === '' ||
+    //     //     data.workingMuscles === '' ||
+    //     //     data.description === '') {
+    //     //     return toast.error('All fields are required');
+    //     // }
 
-        try {
-            await exerciseService.create(data);
+    //     // if (data.name.length < 4) {
+    //     //     return toast.error('Name must be 4 characters long');
+    //     // }
 
-            navigate('/exercises');
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    //     // if (data.description.length < 20) {
+    //     //     return toast.error('Description must be 20 characters long');
+    //     // }
+
+    //     try {
+    //         const newExercise = await exerciseService.create(values);
+
+    //         setExercises(state => [...state, newExercise]);
+
+    //         navigate('/exercises');
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+
+    // };
 
     return (
         <div className="conteiner min-vh-100 d-flex justify-content-center align-items-center form-control-lg">
-            <form onSubmit={addExerciseSubmit}>
+            <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <h2>Add exercise</h2>
                     <label htmlFor="formGroupExampleInput">Image Url</label>
@@ -47,6 +58,8 @@ export const AddExercise = () => {
                         id="formGroupExampleInput"
                         placeholder="Image Url"
                         name="imageUrl"
+                        value={values.imageUrl}
+                        onChange={onChange}
                     />
                 </div>
                 <div className="form-group">
@@ -57,6 +70,8 @@ export const AddExercise = () => {
                         id="formGroupExampleInput2"
                         placeholder="Name"
                         name="name"
+                        value={values.name}
+                        onChange={onChange}
                     />
                 </div>
                 <div className="form-group">
@@ -67,6 +82,8 @@ export const AddExercise = () => {
                         id="formGroupExampleInput2"
                         placeholder="Working muscles"
                         name="workingMuscles"
+                        value={values.workingMuscles}
+                        onChange={onChange}
                     />
                 </div>
                 <div className="form-group">
@@ -77,6 +94,8 @@ export const AddExercise = () => {
                         rows={5}
                         placeholder="Description"
                         name="description"
+                        value={values.description}
+                        onChange={onChange}
                     />
                 </div>
                 <button type="submit" className="btn btn-primary">Add</button>
