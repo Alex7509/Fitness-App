@@ -36,8 +36,6 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.log(error);
         }
-
-
     };
 
     const registerSubmitHandler = async (values) => {
@@ -71,7 +69,6 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.log(error);
         }
-
     };
 
     const logoutHandler = () => {

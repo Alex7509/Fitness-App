@@ -4,27 +4,36 @@ import { Link } from "react-router-dom";
 
 import * as exerciseService from "../../services/exercisesService";
 import { AuthContext } from "../../contexts/authContext";
+import { toast } from "react-toastify";
+import { ExerciseContext } from "../../contexts/exerciseContext";
 
 export const Details = () => {
     const navigate = useNavigate();
     const [exercise, setExercise] = useState({});
+    const [likes, setLikes] = useState([]);
     const { exerciseId } = useParams();
     const { userId, isAuth } = useContext(AuthContext);
+    const { onDelete } = useContext(ExerciseContext);
+
 
     useEffect(() => {
         exerciseService.getOne(exerciseId)
-            .then(setExercise)
-            .catch((error) => console.log(error))
+            .then((result) => {
+                setExercise(result);
+                setLikes(result.likes);
+            })
     }, [exerciseId]);
 
     const isOwner = userId === exercise._ownerId;
 
-   const onDeleteClick = async () => {
+    const onDeleteClick = async () => {
         const isConfirmed = confirm(`Are you sure you want to delete ${exercise.name}`);
 
         if (isConfirmed) {
             try {
                 await exerciseService.deleteExercise(exerciseId);
+
+                onDelete(exerciseId);
 
                 navigate('/exercises');
             } catch (error) {
@@ -33,9 +42,8 @@ export const Details = () => {
         }
     };
 
-
     return (
-        <div className="card mx-auto" style={{ maxWidth: 800 }}>
+        <div className="card mx-auto" style={{ maxWidth: 600 }}>
             <div className="row g-0">
                 <div className="col-md-4">
                     <img src={exercise.imageUrl} className="img-fluid rounded-start" alt={exercise.name} />
@@ -60,7 +68,13 @@ export const Details = () => {
                             </button>
                         </div>
                     )}
+                    {isAuth && (
+                        <button className="btn btn-primary">
+                            Like
+                        </button>
+                    )}
                 </div>
+                <h6 className="text-center">{exercise.likes?.length} likes</h6>
             </div>
         </div>
 

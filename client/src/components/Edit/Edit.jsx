@@ -1,66 +1,31 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
+import { useContext, useEffect } from "react";
 
 import * as exerciseService from "../../services/exercisesService";
+import { UseForm } from "../../hooks/useForm";
+import { ExerciseContext } from "../../contexts/exerciseContext";
 
 export const Edit = () => {
-    const navigate = useNavigate();
     const { exerciseId } = useParams();
-    const [exercise, setExercise] = useState({
+    const { onEditSubmit } = useContext(ExerciseContext);
+    const { values, onChange, onSubmit, changeValues } = UseForm(onEditSubmit, {
         imageUrl: '',
         name: '',
         workingMuscles: '',
         description: '',
+        likes: [],
     });
 
     useEffect(() => {
         exerciseService.getOne(exerciseId)
             .then(result => {
-                setExercise(result);
+                changeValues(result);
             })
-            .catch((error) => console.log(error))
     }, [exerciseId]);
-
-    const onEditSubmit = async (e) => {
-        e.preventDefault();
-
-        const values = Object.fromEntries(new FormData(e.currentTarget));
-
-        if (values.imageUrl === '' ||
-            values.name === '' ||
-            values.workingMuscles === '' ||
-            values.description === '') {
-            return toast.error('All fields are required');
-        }
-
-        if (values.name.length < 4) {
-            return toast.error('Name must be 4 characters long');
-        }
-
-        if (values.description.length < 20) {
-            return toast.error('Description must be 20 characters long');
-        }
-
-        try {
-            await exerciseService.edit(exerciseId, values);
-
-            navigate(`/exercises/${exerciseId}/details`);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const onChange = (e) => {
-        setExercise(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }));
-    };
 
     return (
         <div className="conteiner min-vh-100 d-flex justify-content-center align-items-center form-control-lg">
-            <form onSubmit={onEditSubmit}>
+            <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <h2>Edit exercise</h2>
                     <label htmlFor="formGroupExampleInput">Image Url</label>
@@ -70,7 +35,7 @@ export const Edit = () => {
                         id="formGroupExampleInput"
                         placeholder="Image Url"
                         name="imageUrl"
-                        value={exercise.imageUrl}
+                        value={values.imageUrl}
                         onChange={onChange}
                     />
                 </div>
@@ -82,7 +47,7 @@ export const Edit = () => {
                         id="formGroupExampleInput2"
                         placeholder="Name"
                         name="name"
-                        value={exercise.name}
+                        value={values.name}
                         onChange={onChange}
                     />
                 </div>
@@ -94,7 +59,7 @@ export const Edit = () => {
                         id="formGroupExampleInput2"
                         placeholder="Working muscles"
                         name="workingMuscles"
-                        value={exercise.workingMuscles}
+                        value={values.workingMuscles}
                         onChange={onChange}
                     />
                 </div>
@@ -106,7 +71,7 @@ export const Edit = () => {
                         rows={5}
                         placeholder="Description"
                         name="description"
-                        value={exercise.description}
+                        value={values.description}
                         onChange={onChange}
                     />
                 </div>

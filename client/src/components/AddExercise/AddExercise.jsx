@@ -1,11 +1,10 @@
+import { useContext } from "react";
 
-
-// import * as exerciseService from "../../services/exercisesService";
-// import { toast } from "react-toastify";
 import { UseForm } from "../../hooks/useForm";
+import { ExerciseContext } from "../../contexts/exerciseContext.jsx";
 
-
-export const AddExercise = ({ addExerciseSubmit }) => {
+export const AddExercise = () => {
+    const { addExerciseSubmit } = useContext(ExerciseContext);
     const { values, onChange, onSubmit } = UseForm(addExerciseSubmit, {
         imageUrl: '',
         name: '',
@@ -13,38 +12,6 @@ export const AddExercise = ({ addExerciseSubmit }) => {
         description: '',
         likes: [],
     });
-
-    // const addExerciseSubmit = async (values) => {
-    //     // e.preventDefault();
-
-    //     // const data = Object.fromEntries(new FormData(e.currentTarget));
-
-    //     // if (data.imageUrl === '' ||
-    //     //     data.name === '' ||
-    //     //     data.workingMuscles === '' ||
-    //     //     data.description === '') {
-    //     //     return toast.error('All fields are required');
-    //     // }
-
-    //     // if (data.name.length < 4) {
-    //     //     return toast.error('Name must be 4 characters long');
-    //     // }
-
-    //     // if (data.description.length < 20) {
-    //     //     return toast.error('Description must be 20 characters long');
-    //     // }
-
-    //     try {
-    //         const newExercise = await exerciseService.create(values);
-
-    //         setExercises(state => [...state, newExercise]);
-
-    //         navigate('/exercises');
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-
-    // };
 
     return (
         <div className="conteiner min-vh-100 d-flex justify-content-center align-items-center form-control-lg">

@@ -1,5 +1,4 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
-import {  useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import { NavBar } from "./components/NavBar/NavBar";
 import { Home } from "./components/Home/Home";
@@ -15,48 +14,30 @@ import { MyExercises } from "./components/MyExercises/MyExercises";
 import { ErrorPage } from "./components/404Page/404Page";
 
 import { AuthProvider } from "./contexts/authContext";
-import * as exerciseService from "./services/exercisesService";
+import { ExerciseProvider } from "./contexts/exerciseContext";
+
 
 function App() {
-    const navigate = useNavigate();
-    const [exercises, setExercises] = useState([]);
-
-    useEffect(() => {
-        exerciseService.getAll()
-            .then((result) => setExercises(result))
-    }, [])
-
-
-    const addExerciseSubmit = async (values) => {
-        try {
-            const newExercise = await exerciseService.create(values)
-    
-            setExercises(state => [...state, newExercise]);
-
-            navigate('/exercises');
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     return (
         <AuthProvider>
-            <>
-                <NavBar />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/logout" element={<Logout />} />
-                    <Route path="/exercises" element={<Exercises />} />
-                    <Route path="/add-exercise" element={<AddExercise addExerciseSubmit={addExerciseSubmit} />} />
-                    <Route path="/exercises/:exerciseId/details" element={<Details />} />
-                    <Route path="/exercises/:exerciseId/edit" element={<Edit />} />
-                    <Route path="/my-exercises" element={<MyExercises />} />
-                    <Route path="/*" element={<ErrorPage />} />
-                </Routes>
-            </>
+            <ExerciseProvider>
+                <>
+                    <NavBar />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/logout" element={<Logout />} />
+                        <Route path="/exercises" element={<Exercises />} />
+                        <Route path="/add-exercise" element={<AddExercise />} />
+                        <Route path="/exercises/:exerciseId/details" element={<Details />} />
+                        <Route path="/exercises/:exerciseId/edit" element={<Edit />} />
+                        <Route path="/my-exercises" element={<MyExercises />} />
+                        <Route path="/*" element={<ErrorPage />} />
+                    </Routes>
+                </>
+            </ExerciseProvider>
         </AuthProvider>
     );
 };

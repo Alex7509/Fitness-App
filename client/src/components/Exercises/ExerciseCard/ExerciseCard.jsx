@@ -1,14 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../../contexts/authContext"
+import * as exerciseService from "../../../services/exercisesService";
 
 export const ExerciseCard = ({
     imageUrl,
     name,
     _id,
 }) => {
-    const { isAuth } = useContext(AuthContext);
 
     return (
         <div className="card" style={{ width: "18rem" }}>
@@ -24,13 +24,7 @@ export const ExerciseCard = ({
                         Details
                     </Link>
                 </div>
-                {isAuth && (
-                    <div className="d-grid gap-2 d-md-flex">
-                        <button className="btn btn-primary btn-sm" type="button">Like</button>
-                    </div>
-                )}
             </div>
-
         </div>
     );
 };
