@@ -6,7 +6,7 @@ import { MyExercisesCard } from "./MyExercisesCard/MyExercisesCard"
 
 
 export const MyExercises = () => {
-    const { userId, username } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
     const [userExercises, setUserExercises] = useState([]);
 
     useEffect(() => {

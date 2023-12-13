@@ -13,6 +13,7 @@ export const ExerciseProvider = ({ children }) => {
     useEffect(() => {
         exerciseService.getAll()
             .then((result) => setExercises(result))
+            .catch((error) => console.log(error))
     });
 
     const addExerciseSubmit = async (values) => {
