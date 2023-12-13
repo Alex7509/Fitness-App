@@ -30,11 +30,20 @@ export const edit = async (exerciseId, exerciseData) => {
     const result = request.put(`${baseUrl}/${exerciseId}`, exerciseData);
 
     return result;
-}
+};
 
 export const getExerciseByOwner = async (userId) => {
     const result = await request.get(baseUrl);
     const filteredResult = result.filter(x => x._ownerId === userId);
 
     return filteredResult;
-}
+};
+
+export const like = async (exerciseId, exerciseData) => {
+    const result = await request.put(`${baseUrl}/${exerciseId}`, exerciseData);
+
+    return result;
+};
+
+
+

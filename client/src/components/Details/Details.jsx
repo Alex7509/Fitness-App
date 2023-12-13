@@ -42,6 +42,19 @@ export const Details = () => {
         }
     };
 
+
+    const onLikeClick = () => {
+        if (!likes.includes(userId)) {
+            likes.push(userId);
+            exerciseService.like(exerciseId, exercise.likes)
+                .then((result) => {
+                    setExercise(state => ({ ...state, likes: result.likes }))
+                }).catch((error) => console.log(error))
+        } else {
+            toast.error('You liked this already');
+        }
+    };
+
     return (
         <div className="card mx-auto" style={{ maxWidth: 600 }}>
             <div className="row g-0">
@@ -69,12 +82,12 @@ export const Details = () => {
                         </div>
                     )}
                     {isAuth && (
-                        <button className="btn btn-primary">
+                        <button className="btn btn-primary" onClick={onLikeClick}>
                             Like
                         </button>
                     )}
                 </div>
-                <h6 className="text-center">{exercise.likes?.length} likes</h6>
+                <h6 className="text-center">{likes.length} likes</h6>
             </div>
         </div>
 
