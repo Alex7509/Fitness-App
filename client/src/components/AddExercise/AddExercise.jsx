@@ -1,3 +1,5 @@
+import "./AddExercise.css";
+
 import { useContext } from "react";
 
 import { UseForm } from "../../hooks/useForm";
@@ -65,7 +67,9 @@ export const AddExercise = () => {
                         onChange={onChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Add</button>
+                <div className="text-center form-control-lg">
+                    <button type="submit" className="btn btn-primary">Add</button>
+                </div>
             </form>
         </div>
     );

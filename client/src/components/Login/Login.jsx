@@ -1,3 +1,5 @@
+import './Login.css';
+
 import { useContext } from "react";
 
 import { UseForm } from "../../hooks/useForm";
@@ -15,6 +17,7 @@ export const Login = () => {
         <div className="conteiner min-vh-100 d-flex justify-content-center align-items-center form-control-lg">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
+                    <h2>Login</h2>
                     <label htmlFor="exampleInputEmail1">Email address</label>
                     <input
                         type="email"
@@ -47,3 +50,4 @@ export const Login = () => {
         </div>
     );
 };
+
