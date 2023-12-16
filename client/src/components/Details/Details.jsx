@@ -46,7 +46,7 @@ export const Details = () => {
     const onLikeClick = () => {
         if (!likes.includes(userId)) {
             likes.push(userId);
-            exerciseService.like(exerciseId, exercise.likes)
+            exerciseService.like(exerciseId, exercise)
                 .then((result) => {
                     setExercise(state => ({ ...state, likes: result.likes }))
                 }).catch((error) => console.log(error))
