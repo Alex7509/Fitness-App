@@ -40,10 +40,11 @@ export const getExerciseByOwner = async (userId) => {
 };
 
 export const like = async (exerciseId, exerciseData) => {
-    const result = await request.put(`${baseUrl}/${exerciseId}/like`, exerciseData);
+    const result = await request.put(`${baseUrl}/${exerciseId}`, exerciseData);
 
     return result;
 };
 
 
 
+ 

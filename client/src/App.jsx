@@ -15,6 +15,7 @@ import { ErrorPage } from "./components/404Page/404Page";
 
 import { AuthProvider } from "./contexts/authContext";
 import { ExerciseProvider } from "./contexts/exerciseContext";
+import { AuthGuard } from "./components/Guards/AuthGuards";
 
 
 function App() {
@@ -28,13 +29,16 @@ function App() {
                         <Route path="/about" element={<About />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/logout" element={<Logout />} />
                         <Route path="/exercises" element={<Exercises />} />
-                        <Route path="/add-exercise" element={<AddExercise />} />
                         <Route path="/exercises/:exerciseId/details" element={<Details />} />
-                        <Route path="/exercises/:exerciseId/edit" element={<Edit />} />
-                        <Route path="/my-exercises" element={<MyExercises />} />
                         <Route path="/*" element={<ErrorPage />} />
+
+                        <Route element={<AuthGuard />}>
+                            <Route path="/logout" element={<Logout />} />
+                            <Route path="/add-exercise" element={<AddExercise />} />
+                            <Route path="/exercises/:exerciseId/edit" element={<Edit />} />
+                            <Route path="/my-exercises" element={<MyExercises />} />
+                        </Route>
                     </Routes>
                 </>
             </ExerciseProvider>
