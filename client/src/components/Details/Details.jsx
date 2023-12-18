@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import * as exerciseService from "../../services/exercisesService";
 import { AuthContext } from "../../contexts/authContext";
-import { toast } from "react-toastify";
 import { ExerciseContext } from "../../contexts/exerciseContext";
 
 export const Details = () => {
@@ -41,7 +41,6 @@ export const Details = () => {
             }
         }
     };
-
 
     const onLikeClick = () => {
         if (!likes.includes(userId)) {

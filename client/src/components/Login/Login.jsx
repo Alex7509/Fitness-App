@@ -12,7 +12,6 @@ export const Login = () => {
         password: '',
     });
 
-
     return (
         <div className="conteiner min-vh-100 d-flex justify-content-center align-items-center form-control-lg">
             <form onSubmit={onSubmit}>

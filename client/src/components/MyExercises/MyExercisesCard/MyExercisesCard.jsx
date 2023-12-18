@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import "./MyExercisesCard.css"
 
 import * as exerciseService from "../../../services/exercisesService";
 import { ExerciseContext } from "../../../contexts/exerciseContext";

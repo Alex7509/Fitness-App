@@ -1,8 +1,4 @@
-import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-import { AuthContext } from "../../../contexts/authContext"
-import * as exerciseService from "../../../services/exercisesService";
 
 export const ExerciseCard = ({
     imageUrl,

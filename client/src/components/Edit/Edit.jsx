@@ -1,3 +1,4 @@
+import "./Edit.css";
 import { useParams } from "react-router-dom";
 import { useContext, useEffect } from "react";
 
@@ -75,7 +76,9 @@ export const Edit = () => {
                         onChange={onChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Edit</button>
+                <div className="text-center form-control-lg">
+                    <button type="submit" className="btn btn-primary">Edit</button>
+                </div>
             </form>
         </div>
     );
