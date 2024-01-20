@@ -1,4 +1,4 @@
-import "./Edit.css";
+
 import { useParams } from "react-router-dom";
 import { useContext, useEffect } from "react";
 
@@ -25,61 +25,48 @@ export const Edit = () => {
     }, [exerciseId]);
 
     return (
-        <div className="conteiner min-vh-100 d-flex justify-content-center align-items-center form-control-lg">
-            <form onSubmit={onSubmit}>
-                <div className="form-group">
-                    <h2>Edit exercise</h2>
-                    <label htmlFor="formGroupExampleInput">Image Url</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="formGroupExampleInput"
-                        placeholder="Image Url"
-                        name="imageUrl"
-                        value={values.imageUrl}
-                        onChange={onChange}
-                    />
+        <main id="create">
+            <section id="create-container">
+                <div className="create-container-info">
+                    <h1>Edit Exercise</h1>
+                    <form onSubmit={onSubmit}>
+
+                        <label>Name:</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={values.name}
+                            onChange={onChange} />
+
+                        <label>Image:</label>
+                        <input
+                            type="text"
+                            id="image"
+                            name="imageUrl"
+                            placeholder="http://..."
+                            value={values.imageUrl}
+                            onChange={onChange} />
+
+                        <label>Working Muscles:</label>
+                        <input
+                            type="text"
+                            id="muscles"
+                            name="workingMuscles"
+                            value={values.workingMuscles}
+                            onChange={onChange} />
+
+                        <label>Description:</label>
+                        <textarea
+                            id="description"
+                            name="description"
+                            value={values.description}
+                            onChange={onChange} />
+
+                        <input type="submit" id="btn" defaultValue="CREATE" />
+                    </form>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="formGroupExampleInput2">Exercise name</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="formGroupExampleInput2"
-                        placeholder="Name"
-                        name="name"
-                        value={values.name}
-                        onChange={onChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="formGroupExampleInput2">Working muscles</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="formGroupExampleInput2"
-                        placeholder="Working muscles"
-                        name="workingMuscles"
-                        value={values.workingMuscles}
-                        onChange={onChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1">Description</label>
-                    <textarea
-                        className="form-control"
-                        id="exampleFormControlTextarea1"
-                        rows={5}
-                        placeholder="Description"
-                        name="description"
-                        value={values.description}
-                        onChange={onChange}
-                    />
-                </div>
-                <div className="text-center form-control-lg">
-                    <button type="submit" className="btn btn-primary">Edit</button>
-                </div>
-            </form>
-        </div>
+            </section>
+        </main>
     );
 };

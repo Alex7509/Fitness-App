@@ -1,6 +1,7 @@
+import "./MyExercisesCard.css";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import "./MyExercisesCard.css"
 
 import * as exerciseService from "../../../services/exercisesService";
 import { ExerciseContext } from "../../../contexts/exerciseContext";
@@ -29,14 +30,14 @@ export const MyExercisesCard = ({
     };
 
     return (
-        <div className="card mx-auto" style={{ maxWidth: 500 }}>
-            <div className="card-body border">
-                {name}
-                <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <Link to={'/add-exercise'} className="btn btn-primary me-md-2 btn-sm" type="button">Create</Link>
-                    <Link to={`/exercises/${_id}/details`} className="btn btn-primary btn-sm" type="button">Details</Link>
-                    <Link to={`/exercises/${_id}/edit`} className="btn btn-primary btn-sm" type="button">Edit</Link>
-                    <button className="btn btn-danger btn-sm" type="button" onClick={onDeleteClick} >Delete</button>
+        <div className="card mx-auto bg-dark" style={{ maxWidth: 600 }}>
+            <div className="myExercises-card">
+                <p>{name} </p>
+                <div className="myExercises-buttons">
+                    <Link to={'/add-exercise'} className="myExercises-create" type="button">Create</Link>
+                    <Link to={`/exercises/${_id}/details`} className="myExercises-details" type="button">Details</Link>
+                    <Link to={`/exercises/${_id}/edit`} className="myExercises-edit" type="button">Edit</Link>
+                    <button className="myExercises-delete" type="button" onClick={onDeleteClick} >Delete</button>
                 </div>
             </div>
         </div>

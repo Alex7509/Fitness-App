@@ -18,6 +18,7 @@ import { ExerciseProvider } from "./contexts/exerciseContext";
 import { AuthGuard } from "./components/Guards/AuthGuards";
 
 
+
 function App() {
     return (
         <AuthProvider>

@@ -1,3 +1,5 @@
+import "./Exercises.css";
+
 import { useEffect, useState } from "react";
 
 import { ExerciseCard } from "./ExerciseCard/ExerciseCard";
@@ -13,14 +15,20 @@ export const Exercises = () => {
     }, []);
 
     return (
-        <div className="row mx-auto">
-            {exercises.map(exercise => (
-                <ExerciseCard key={exercise._id} {...exercise} />
-            ))}
+        <main id="catalog">
+            <section className="exercises">
+                <h1>Exercises</h1>
+                <div className="exercises-list">
+                    {exercises.map(exercise => (
+                        <ExerciseCard key={exercise._id} {...exercise} />
+                    ))}
 
-            {exercises.length === 0 && (
-                <p className="text-center fs-1">There are no added exercises yet.</p>
-            )}
-        </div>
+                    {exercises.length === 0 && (
+                        <div className="no-exercises">
+                            <p>There are no added exercises yet!</p>
+                        </div>)}
+                </div>
+            </section>
+        </main>
     );
 };

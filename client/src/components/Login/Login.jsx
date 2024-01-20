@@ -1,5 +1,4 @@
-import './Login.css';
-
+import "./Login.css";
 import { useContext } from "react";
 
 import { UseForm } from "../../hooks/useForm";
@@ -13,40 +12,33 @@ export const Login = () => {
     });
 
     return (
-        <div className="conteiner min-vh-100 d-flex justify-content-center align-items-center form-control-lg">
-            <form onSubmit={onSubmit}>
-                <div className="form-group">
-                    <h2>Login</h2>
-                    <label htmlFor="exampleInputEmail1">Email address</label>
+        <main id="login">
+            <div className="login-box">
+                <h1>Login</h1>
+                <form onSubmit={onSubmit}>
+                    <label>Email</label>
                     <input
-                        type="email"
-                        className="form-control"
-                        id="exampleInputEmail1"
-                        placeholder="Enter email"
+                        type="text"
                         name="email"
+                        placeholder="Email.."
                         value={values.email}
-                        onChange={onChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Password</label>
+                        onChange={onChange} />
+                    <label>Password</label>
                     <input
                         type="password"
-                        className="form-control"
-                        id="exampleInputPassword1"
-                        placeholder="Password"
                         name="password"
+                        placeholder="Password.."
                         value={values.password}
-                        onChange={onChange}
-                    />
-                </div>
-                <div className="text-center form-control-lg">
-                    <button type="submit" className="btn btn-primary">
-                        LOGIN
-                    </button>
-                </div>
-            </form>
-        </div>
+                        onChange={onChange} />
+
+                    <input type="submit" defaultValue="Login" />
+                </form>
+                <p>
+                    Don't have an account? <a href="/register">Register here</a>
+                </p>
+            </div>
+        </main>
+
     );
 };
 

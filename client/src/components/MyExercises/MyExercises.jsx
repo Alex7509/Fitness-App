@@ -1,3 +1,5 @@
+import "./MyExercises.css";
+
 import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../contexts/authContext";
@@ -16,8 +18,8 @@ export const MyExercises = () => {
     }, []);
 
     return (
-        <>
-            <div className="text-center">
+        <main id="myExercise">
+            <div className="myExercise-text">
                 <h1>My Exercises</h1>
             </div>
             {userExercises.map(x => (
@@ -25,8 +27,10 @@ export const MyExercises = () => {
             ))}
 
             {userExercises.length === 0 && (
-                <p className="text-center fs-1">There are no added exercises yet.</p>
+                <div className="no-exercises">
+                    <p>There are no added exercises yet!</p>
+                </div>
             )}
-        </>
+        </main>
     );
 };
