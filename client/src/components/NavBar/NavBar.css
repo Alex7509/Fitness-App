@@ -1,25 +1,31 @@
-nav {
-    background-color: #2e87cb;
+nav{
+    background-color: #050912;
     width: 100%;
     padding: 2px 0;
     display: flex;
-    padding-left: 50px;
+    padding-left: 30px;
     align-items: center;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    object-fit: cover;
+    object-position: center;
 }
 
 nav ul {
     flex: 1;
-    text-align: center;
-    margin: 0;
 }
 
 nav ul li {
     display: inline-block;
-    margin: 15px 20px;
+    margin: 10px 20px ;
 }
 
-nav ul li a {
+nav ul li a{
     color: white;
     text-decoration: none;
-    font-size: large;
+    text-transform: uppercase;
 }

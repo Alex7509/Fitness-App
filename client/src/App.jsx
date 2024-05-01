@@ -12,10 +12,12 @@ import { Exercises } from "./components/Exercises/Exercises";
 import { Edit } from "./components/Edit/Edit";
 import { MyExercises } from "./components/MyExercises/MyExercises";
 import { ErrorPage } from "./components/404Page/404Page";
+import { Footer } from "./components/Footer/Footer";
 
 import { AuthProvider } from "./contexts/authContext";
 import { ExerciseProvider } from "./contexts/exerciseContext";
 import { AuthGuard } from "./components/Guards/AuthGuards";
+
 
 
 
@@ -41,6 +43,7 @@ function App() {
                             <Route path="/my-exercises" element={<MyExercises />} />
                         </Route>
                     </Routes>
+                    <Footer/>
                 </>
             </ExerciseProvider>
         </AuthProvider>

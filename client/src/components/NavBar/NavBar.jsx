@@ -9,43 +9,28 @@ export const NavBar = () => {
     const { isAuth } = useContext(AuthContext);
 
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/about">About</Link>
-                </li>
-
-                <li>
-                    <Link to="/exercises">Exercises</Link>
-                </li>
-                {isAuth && (
-                    <>
-                        <li>
-                            <Link to="/add-exercise">Add exercise</Link>
-                        </li>
-                        <li>
-                            <Link to="/my-exercises">My exercises</Link>
-                        </li>
-                        <li>
-                            <Link to="/logout">Logout</Link>
-                        </li>
-                    </>
-                )}
-
-                {!isAuth && (
-                    <>
-                        <li>
-                            <Link to="/login">Login</Link>
-                        </li>
-                        <li>
-                            <Link to="/register">Register</Link>
-                        </li>
-                    </>
-                )}
-            </ul>
-        </nav >
+        <header className="header">
+            <nav>
+                <img src="/images/logo.jpg" className="logo" />
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/exercises">Exercises</Link></li>
+                    {!isAuth && (
+                        <>
+                            <li><Link to="login">Login</Link></li>
+                            <li><Link to="/register">Register</Link></li>
+                        </>
+                    )}
+                    {isAuth && (
+                        <>
+                            <li><Link to="/add-exercise">Add Exercise</Link></li>
+                            <li><Link to="/my-exercises">My Exercises</Link></li>
+                            <li><Link to="/logout">Logout</Link></li>
+                        </>
+                    )}
+                </ul>
+            </nav>
+        </header>
     );
 };
