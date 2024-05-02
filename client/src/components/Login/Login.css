@@ -1,13 +1,13 @@
-#login {
+.login {
     width: 100%;
     height: 100vh;
-    background-image: url(../../../public/images/background2.jpg);
+    background-image: url(../../../public/images/background-2.jpg);
     background-position: center;
     background-size: cover;
     padding-top: 50px;
-  }
-  
-  .login-box {
+}
+
+.login-box {
     color: white;
     width: 360px;
     height: 330px;
@@ -16,27 +16,27 @@
     border: 2px solid #2e87cb;
     border-radius: 20px;
     margin-top: 5%;
-  }
-  
-  .login-box h1 {
+}
+
+.login-box h1 {
     text-align: center;
     padding-top: 15px;
-  }
-  
-  
-  form {
+}
+
+
+.login-box form {
     width: 300px;
     margin-left: 20px;
-  }
-  
-  form label {
+}
+
+.login-box form label {
     display: flex;
     margin-top: 20px;
     margin-bottom: 5px;
     font-size: 18px;
-  }
-  
-  form input {
+}
+
+.login-box form input {
     width: 320px;
     height: 30px;
     padding-left: 7px;
@@ -45,25 +45,26 @@
     border-radius: 8px;
     outline: none;
     color: black;
-  
-  }
-  
-  input[type="submit"] {
+
+}
+
+.login-box input[type="submit"] {
     width: 320px;
     height: 35px;
-    margin-top: 20px;
+    margin-top: 30px;
     border: none;
     background-color: #050912;
     color: white;
     font-size: 15px;
-  }
-  
-  .login-box p {
+    cursor: pointer;
+}
+
+.login-box p {
     text-align: center;
     padding-top: 20px;
     font-size: 15px;
-  }
-  
-  .login-box p > a {
+}
+
+.login-box p>a {
     color: #050912;
-  }
+}

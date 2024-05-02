@@ -1,4 +1,4 @@
-.exercises .exercise {
+.exercise {
     display: inline-block;
     width: 500px;
     height: 250px;
@@ -11,7 +11,7 @@
     background-color: #096BAB;
 }
 
-.exercises .exercise-img img {
+.exercise-info img {
     float: left;
     border: 2px solid rgba(169, 152, 198, 0.781);
     border-radius: 50%;
@@ -20,48 +20,28 @@
     margin: 20px;
 }
 
-.exercises .exercise-info {
-    margin-bottom: 20px;
+.exercise-info h2{
+    color: white;
+    margin: 15px;
 }
 
-.exercises .exercise-info h1 {
-    font-size: 18px;
-    margin-top: 30px;
+.exercise-info p{
     color: white;
+    margin: 15px;
 }
 
-.exercises .exercise-info p {
+.btn-details{
+    background-color: #050912;
     color: white;
-    font-weight: bolder;
-    margin-top: 10px;
-}
-
-.exercises .exercise-info span {
-    color: white;
-    font-weight: bolder;
-}
-
-.exercises .exercise .btn-details {
-    border: 5em;
-    cursor: pointer;
-    outline: none;
-    font-size: 16px;
-    -webkit-transform: translate(0);
-    transform: translate(0);
-    background-image: linear-gradient(45deg, #732E4D, #AC6897);
-    padding: 0.7em 2em;
-    border-radius: 65px;
-    box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.438);
-    -webkit-transition: box-shadow 0.25s;
-    transition: box-shadow 0.25s;
-    color: white;
-    width: 100px;
-    margin-bottom: 10px;
-    margin-left: 20px;
     text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-.exercises .exercise .btn-details:hover {
-    box-shadow: 0 12px 24px rgba(128, 128, 128, 0.1);
+.btn-details:hover{
+    background-color: #0e1831;
 }
+
+
 

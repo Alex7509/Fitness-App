@@ -10,7 +10,6 @@ import { AddExercise } from "./components/AddExercise/AddExercise";
 import { Details } from "./components/Details/Details";
 import { Exercises } from "./components/Exercises/Exercises";
 import { Edit } from "./components/Edit/Edit";
-import { MyExercises } from "./components/MyExercises/MyExercises";
 import { ErrorPage } from "./components/404Page/404Page";
 import { Footer } from "./components/Footer/Footer";
 
@@ -40,7 +39,6 @@ function App() {
                             <Route path="/logout" element={<Logout />} />
                             <Route path="/add-exercise" element={<AddExercise />} />
                             <Route path="/exercises/:exerciseId/edit" element={<Edit />} />
-                            <Route path="/my-exercises" element={<MyExercises />} />
                         </Route>
                     </Routes>
                     <Footer/>

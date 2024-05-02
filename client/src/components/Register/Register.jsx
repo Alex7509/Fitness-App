@@ -15,7 +15,7 @@ export const Register = () => {
     });
 
     return (
-        <main id="register">
+        <div className="register">
             <div className="register-box">
                 <h1>Register</h1>
                 <form onSubmit={onSubmit}>
@@ -57,6 +57,6 @@ export const Register = () => {
                     Already have an account? <a href="/login">Login here</a>
                 </p>
             </div>
-        </main>
+        </div>
     );
 };

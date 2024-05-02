@@ -15,20 +15,19 @@ export const Exercises = () => {
     }, []);
 
     return (
-        <main id="catalog">
-            <section className="exercises">
+        <div className="exercises">
                 <h1>Exercises</h1>
                 <div className="exercises-list">
                     {exercises.map(exercise => (
                         <ExerciseCard key={exercise._id} {...exercise} />
                     ))}
+                    
 
                     {exercises.length === 0 && (
                         <div className="no-exercises">
                             <p>There are no added exercises yet!</p>
                         </div>)}
                 </div>
-            </section>
-        </main>
+        </div>
     );
 };

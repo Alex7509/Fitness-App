@@ -2,14 +2,33 @@ import "./About.css";
 
 export const About = () => {
     return (
-        <main id="about">
-            <img src="https://hips.hearstapps.com/hmg-prod/images/chris-64a6d63b7263d.png?crop=1.00xw:0.963xh;0,0.0372xh&resize=1200:*" className="about-img" alt="Chris Bumstead" />
-            <div className="about-text">
-                <h1>Exercise & Fitness</h1>
+        <div className="about-page">
+            <div className="about-page-content">
+                <h2>
+                    How do you explain fitness?
+                </h2>
+                <p>Experts define physical fitness as “one's ability to execute daily activities with optimal performance,
+                    endurance, and strength with the management of disease, fatigue, and stress and reduced sedentary behavior.”
+                    This description goes beyond being able to run quickly or lift heavy weights.</p>
+                <h2>
+                    Why is fitness important?
+                </h2>
                 <p>
-                    Exercising regularly, every day if possible, is the single most important thing you can do for your health. In the short term, exercise helps to control appetite, boost mood, and improve sleep. In the long term, it reduces the risk of heart disease, stroke, diabetes, dementia, depression, and many cancers.
+                    Physical activity or exercise can improve your health and reduce the risk of developing several diseases
+                    like type 2 diabetes, cancer and cardiovascular disease.
+                    Physical activity and exercise can have immediate and long-term health benefits.
+                    Most importantly, regular activity can improve your quality of life.
+                </p>
+                <h2>
+                    How to be fit and healthy?
+                </h2>
+                <p>
+                    Be physically active for 30 minutes most days of the week. Break this up into three 10-minute sessions when pressed for time.
+                    Healthy movement may include walking, sports, dancing, yoga, running or other activities you enjoy.
+                    Eat a well-balanced, low-fat diet with lots of fruits, vegetables and whole grains.
                 </p>
             </div>
-        </main>
+            <img src="../../../public/images/logo.jpg" />
+        </div>
     );
 };

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext.jsx";
 
 export const NavBar = () => {
-    const { isAuth } = useContext(AuthContext);
+    const { isAuth, username } = useContext(AuthContext);
 
     return (
         <header className="header">
@@ -25,11 +25,13 @@ export const NavBar = () => {
                     {isAuth && (
                         <>
                             <li><Link to="/add-exercise">Add Exercise</Link></li>
-                            <li><Link to="/my-exercises">My Exercises</Link></li>
                             <li><Link to="/logout">Logout</Link></li>
                         </>
                     )}
                 </ul>
+                {isAuth && (
+                    <p className="user-username">Welcome {username}</p>
+                )}
             </nav>
         </header>
     );

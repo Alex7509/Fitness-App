@@ -1,13 +1,13 @@
-#create {
+.create {
     width: 100%;
     height: 100vh;
-    background-image: url(../../../public/images/background2.jpg);
+    background-image: url(../../../public/images/background-2.jpg);
     background-position: center;
     background-size: cover;
-    padding-top: 20px;
-  }
-  
-  #create-container {
+    padding-top: 50px;
+}
+
+.create-box{
     color: white;
     width: 360px;
     height: auto;
@@ -15,28 +15,27 @@
     background-color: #096BAB;
     border: 2px solid #2e87cb;
     border-radius: 20px;
-  }
-  
-  #create-container h1 {
+    margin-top: 5%;
+}
+
+.create-box h1{
     text-align: center;
     padding-top: 15px;
-    color: white;
-  }
-  
-  
-  #create-container form {
-    width: 300px;
+}
+
+.create-box form{
+    width: 500px;
     margin-left: 20px;
-  }
-  
-  #create-container form label {
+}
+
+.create-box form label {
     display: flex;
     margin-top: 20px;
     margin-bottom: 5px;
     font-size: 18px;
-  }
-  
-  #create-container form input {
+}
+
+.create-box form input {
     width: 320px;
     height: 30px;
     padding-left: 7px;
@@ -44,19 +43,11 @@
     border: 1px solid gray;
     border-radius: 8px;
     outline: none;
-    background-color: whitesmoke;
-  }
-  
-  #create-container input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  
-  #create-container input[type="number"] {
-    -moz-appearance: textfield;
-  }
-  
-  #create-container form textarea {
+    color: black;
+
+}
+
+.create-box form textarea {
     width: 320px;
     height: 80px;
     padding-left: 7px;
@@ -68,16 +59,15 @@
     resize: none;
     color: black;
   }
-  
-  
-  #create-container input[type="submit"] {
+
+.create-box input[type="submit"] {
     width: 320px;
     height: 35px;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
     border: none;
     background-color: #050912;
     color: white;
     font-size: 15px;
-    margin-bottom: 30px;
-  }
-  
+    cursor: pointer;
+}

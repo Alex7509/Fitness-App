@@ -43,34 +43,29 @@ export const Details = () => {
 
 
     return (
-        <main id="details">
-            <section id="details-info">
-                <div className="exercise-image">
+        <div className="details">
+            <div className="details-info">
+                <div className="details-content">
                     <img src={exercise.imageUrl} />
+                    <h1 id>{exercise.name}</h1>
+                        <p className="muscles">
+                            Working muscles: {exercise.workingMuscles}
+                        </p>
+                        <p className="description">
+                            Description: {exercise.description}
+                        </p>
                 </div>
-                <div className="exercise">
-                    <div className="exercise-text">
-                        <h1 id="name">{exercise.name}</h1>
-                        <p id="muscle">
-                            <span>Working muscles: {exercise.workingMuscles}</span>
-                        </p>
-                        <p id="description">
-                            {exercise.description}
-                        </p>
-                    </div>
+                
                     {isOwner && (
-                        <div className="product-btn">
-                            <div className="author">
-                                <Link to={`/exercises/${exerciseId}/edit`} className="btn-edit">
+                        <div className="edit-delete-btns">
+                                <Link to={`/exercises/${exerciseId}/edit`} className="edit-btn">
                                     Edit
                                 </Link>
-                                <button className="btn-delete" onClick={onDeleteClick}>
+                                <button className="delete-btn" onClick={onDeleteClick}>
                                     Delete
                                 </button>
-                            </div>
                         </div>)} 
                 </div>
-            </section>
-        </main>
+            </div>
     );
 };

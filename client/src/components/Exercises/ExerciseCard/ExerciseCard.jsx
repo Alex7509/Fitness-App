@@ -10,19 +10,17 @@ export const ExerciseCard = ({
 }) => {
 
     return (
-            <div className="exercise">
-                <div className="exercise-img">
-                    <img src={imageUrl} />
-                </div>
-                <div className="exercise-info">
-                    <h1>{name}</h1>
-                    <p>
-                        <span>Working Muscles: </span>{workingMuscles}
-                    </p>
-                </div>
+        <div className="exercise">
+            <div className="exercise-info">
+                <img src={imageUrl} />
+                <h2>{name}</h2>
+                <p>
+                    Working Muscles: {workingMuscles}
+                </p>
                 <Link to={`${_id}/details`} className="btn-details">
                     Details
                 </Link>
             </div>
+        </div>
     );
 };

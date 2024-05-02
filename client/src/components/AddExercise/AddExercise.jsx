@@ -16,12 +16,10 @@ export const AddExercise = () => {
     });
 
     return (
-        <main id="create">
-            <section id="create-container">
-                <div className="create-container-info">
+        <div className="create">
+                <div className="create-box">
                     <h1>Add Exercise</h1>
                     <form onSubmit={onSubmit}>
-
                         <label>Name:</label>
                         <input
                             type="text"
@@ -54,10 +52,9 @@ export const AddExercise = () => {
                             value={values.description} 
                             onChange={onChange}/>
 
-                        <input type="submit" id="btn" defaultValue="CREATE" />
+                        <input type="submit"  defaultValue="Create" />
                     </form>
                 </div>
-            </section>
-        </main>
+        </div>
     );
 };

@@ -12,7 +12,7 @@ export const Login = () => {
     });
 
     return (
-        <main id="login">
+        <div className="login">
             <div className="login-box">
                 <h1>Login</h1>
                 <form onSubmit={onSubmit}>
@@ -31,14 +31,13 @@ export const Login = () => {
                         value={values.password}
                         onChange={onChange} />
 
-                    <input type="submit" defaultValue="Login" />
+                    <input type="submit" defaultValue="Login"/>
                 </form>
                 <p>
                     Don't have an account? <a href="/register">Register here</a>
                 </p>
             </div>
-        </main>
-
+        </div>
     );
 };
 
